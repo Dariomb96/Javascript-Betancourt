@@ -4,7 +4,7 @@ const p = parseInt(prompt('Numero B'));
 let c = 0;
 let cantit = 0;
 
-for (let r = 0 ; r <= 250; r++) {
+for (let r = 0 ; r <= 500; r++) {
     if (c < 500) {
         c = c + (i + p);
         console.log(c);
