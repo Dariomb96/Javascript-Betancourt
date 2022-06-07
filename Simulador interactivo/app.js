@@ -1,10 +1,10 @@
 alert('simulador para compra de albums calculando monto total y cuotas')
 
-let v1 = 7900
-let v2 = 19200
-let v3 = 9000
-let v4 = 11900
-let d = 3500
+const v1 = 7900
+const v2 = 19200
+const v3 = 9000
+const v4 = 11900
+const d = 3500
 let total = 0
 let compra = true
 let logv1 = 0
@@ -15,77 +15,61 @@ let logv3 = 0
 let logd3 = 0
 let logv4 = 0
 let logd4 = 0
+const TAME_IMPALA = 1
+const RADIOHEAD = 2
+const KORNEL_KOVACS = 3
+const GUSTAVO_CERATI = 4
 
+function agregarProducto(album, precio, formato) {
+    cantidad = parseInt(prompt('Seleccione cantidad:'))
+    total = total + (cantidad * precio);
+    switch (album) {
+        case TAME_IMPALA:
+            if (formato == 1) { logv1 = cantidad; } else { logd1 = cantidad };
+            break;
+        case RADIOHEAD:
+            if (formato == 1) { logv2 = cantidad; } else { logd2 = cantidad };
+            break;
+        case KORNEL_KOVACS:
+            if (formato == 1) { logv3 = cantidad; } else { logd3 = cantidad };
+            break;
+        case GUSTAVO_CERATI:
+            if (formato == 1) { logv4 = cantidad; } else { logd4 = cantidad };
+            break;
+    }
+}
 
-
-
-
-
+/*function producto2(selec, log){
+    cantidad = parseInt(prompt('Seleccione cantidad:'))
+    total = total + (cantidad * selec);
+    log = cantidad;
+}*/
 
 
 
 while (compra) {
+    let precio;
     switch (parseInt(prompt('Seleccione un producto: \n1: Tame impala - Lonerism \n2: Radiohead - In Rainbows \n3: Kornél Kovács - The Bells  \n4: Gustavo Cerati - Siempre Es Hoy \n5: Finalizar compra'))) {
         case 1:
-            input = parseInt(prompt('Seleccione formato: \n1: Vinilo: $7900 \n2: Digital: $3500'));
-            if (input == 1) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * v1);
-                logv1 = cantidad;
-                console.log(logv1);
-                break;
-            } else if (input == 2) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * d);
-                logd1 = cantidad;
-                console.log(total);
-                break;
-            }
+            formato = parseInt(prompt('Seleccione formato: \n1: Vinilo: $7900 \n2: Digital: $3500'));
+            if (formato == 1) {precio = v1} else {precio = d}
+            agregarProducto(TAME_IMPALA, precio, formato);
+            break;
         case 2:
-            input = parseInt(prompt('Seleccione formato: \n1: Vinilo: $19200 \n2: Digital: $3500'));
-            if (input == 1) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * v2);
-                logv2 = cantidad;
-                console.log(total);
-                break;
-            } else if (input == 2) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * d);
-                logd2 = cantidad;
-                console.log(total);
-                break;
-            }
+            formato = parseInt(prompt('Seleccione formato: \n1: Vinilo: $19200 \n2: Digital: $3500'));
+            if (formato == 1) {precio = v2} else {precio = d}
+            agregarProducto(RADIOHEAD, precio, formato);
+            break;
         case 3:
-            input = parseInt(prompt('Seleccione formato: \n1: Vinilo: $9000 \n2: Digital: $3500'));
-            if (input == 1) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * v3);
-                logv3 = cantidad;
-                console.log(total);
-                break;
-            } else if (input == 2) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * d);
-                logd3 = cantidad;
-                console.log(total);
-                break;
-            }
+            formato = parseInt(prompt('Seleccione formato: \n1: Vinilo: $9000 \n2: Digital: $3500'));
+            if (formato == 1) {precio = v3} else {precio = d}
+            agregarProducto(KORNEL_KOVACS, precio, formato);
+            break;
         case 4:
-            input = parseInt(prompt('Seleccione formato: \n1: Vinilo: $11900 \n2: Digital: $3500'));
-            if (input == 1) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * v4);
-                logv4 = cantidad;
-                console.log(total);
-                break;
-            } else if (input == 2) {
-                cantidad = parseInt(prompt('Seleccione cantidad:'))
-                total = total + (cantidad * d);
-                logd4 = cantidad;
-                console.log(total);
-                break;
-            }
+            formato = parseInt(prompt('Seleccione formato: \n1: Vinilo: $11900 \n2: Digital: $3500'));
+            if (formato == 1) {precio = v4} else {precio = d}
+            agregarProducto(GUSTAVO_CERATI, precio, formato);
+            break;
         case 5:
             compra = false;
             while (input !== 'no') {
@@ -106,9 +90,9 @@ while (compra) {
                     alert('Codigo de 33% descuento aplicado, nuevo total: ' + total);
                     alert('Gracias por su compra!');
                     break;
-                }else if (input == 'no') {
+                } else if (input == 'no') {
                     alert('Total: ' + total + '\nGracias por su compra!');
-                }else {
+                } else {
                     alert('codigo incorrecto!');
                 }
             }
